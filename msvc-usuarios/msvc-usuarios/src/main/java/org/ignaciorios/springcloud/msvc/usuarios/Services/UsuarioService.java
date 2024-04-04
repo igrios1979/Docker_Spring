@@ -1,4 +1,4 @@
-package org.ignaciorios.springcloud.msvc.usuarios;
+package org.ignaciorios.springcloud.msvc.usuarios.Services;
 
 
 import org.ignaciorios.springcloud.msvc.usuarios.models.entity.Usuario;
@@ -11,6 +11,8 @@ public interface UsuarioService {
     Optional<Usuario> porId(Long id);
     Usuario guardar(Usuario usuario);
     void eliminar(Long id);
+
+    Optional<Usuario> porEmail(String email);
 
 
 }
