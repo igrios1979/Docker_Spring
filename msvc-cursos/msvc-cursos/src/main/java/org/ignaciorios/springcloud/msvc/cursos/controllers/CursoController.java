@@ -2,7 +2,7 @@ package org.ignaciorios.springcloud.msvc.cursos.controllers;
 
 
 import jakarta.validation.Valid;
-import org.ignaciorios.springcloud.msvc.cursos.Entity.Curso;
+import org.ignaciorios.springcloud.msvc.cursos.models.entity.Curso;
 import org.ignaciorios.springcloud.msvc.cursos.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

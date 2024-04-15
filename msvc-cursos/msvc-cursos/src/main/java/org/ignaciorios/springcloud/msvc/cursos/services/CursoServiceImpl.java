@@ -1,9 +1,8 @@
 package org.ignaciorios.springcloud.msvc.cursos.services;
 
-import org.ignaciorios.springcloud.msvc.cursos.Entity.Curso;
+import org.ignaciorios.springcloud.msvc.cursos.models.entity.Curso;
 import org.ignaciorios.springcloud.msvc.cursos.repositories.CursoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

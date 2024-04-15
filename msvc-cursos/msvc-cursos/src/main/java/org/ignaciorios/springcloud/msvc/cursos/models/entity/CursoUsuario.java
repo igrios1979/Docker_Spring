@@ -1,4 +1,4 @@
-package org.ignaciorios.springcloud.msvc.cursos.Entity;
+package org.ignaciorios.springcloud.msvc.cursos.models.entity;
 
 import jakarta.persistence.*;
 
@@ -31,14 +31,23 @@ public class CursoUsuario {
 
     @Override
     public boolean equals(Object obj) {
+        // Verifica si los dos objetos son la misma instancia en la memoria
         if (this == obj) {
             return true;
         }
+
+        // Verifica si el objeto pasado como argumento es una instancia de la clase CursoUsuario
         if (!(obj instanceof CursoUsuario)) {
             return false;
         }
-        CursoUsuario o = (CursoUsuario) obj;
-        return this.UsId != null && this.UsId.equals(o.UsId);
 
+        // Convierte el objeto pasado como argumento en un objeto de la clase CursoUsuario
+        CursoUsuario o = (CursoUsuario) obj;
+
+        // Compara los atributos de los dos objetos para determinar si son iguales
+        // En este caso, compara el atributo UsId de ambos objetos
+        // Devuelve true si el atributo UsId de ambos objetos no es nulo y son iguales
+        return this.UsId != null && this.UsId.equals(o.UsId);
     }
+
 }
