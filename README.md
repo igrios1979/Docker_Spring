@@ -17,3 +17,17 @@ Este fragmento de código define una relación uno-a-muchos entre dos entidades 
 - `private List<CursoUsuario> cursoUsuarios;`: Aquí se declara una lista que contendrá objetos de la clase `CursoUsuario`. Esta lista representa la parte "muchos" de la relación uno-a-muchos definida por la anotación `@OneToMany`. Cada objeto de esta lista estará asociado a la instancia actual de la clase que contiene este código a través de la columna "curso_id" en la base de datos.
 
 
+----------------------------------------------
+
+
+
+La comunicación en microservicios a través de OpenFeign se basa en la creación de interfaces Java anotadas con anotaciones específicas de Feign para definir los puntos finales del servicio remoto. OpenFeign es una biblioteca que simplifica la integración de servicios web RESTful en aplicaciones Java.
+
+Aquí hay un resumen básico de cómo funciona la comunicación en microservicios utilizando OpenFeign:
+
+Definición de interfaz: Primero, defines una interfaz Java que represente el servicio remoto al que deseas comunicarte. Esta interfaz contiene métodos que representan las operaciones que deseas realizar en el servicio.
+Anotaciones Feign: Utilizas anotaciones de Feign, como @FeignClient y @RequestMapping, para configurar la interfaz y especificar detalles como la URL base del servicio y las rutas de los puntos finales.
+Inyección de dependencias: En tu aplicación, inyectas esta interfaz como una dependencia donde quieras utilizarla.
+Llamadas al servicio remoto: Finalmente, cuando llamas a los métodos de la interfaz, Feign se encarga de realizar la solicitud HTTP correspondiente al servicio remoto utilizando las configuraciones proporcionadas en las anotaciones. También maneja la serialización y deserialización de los datos.
+En resumen, OpenFeign simplifica la comunicación entre microservicios al proporcionar una forma declarativa de definir las llamadas a los servicios remotos, lo que reduce la cantidad de código boilerplate necesario y facilita la integración de servicios en aplicaciones Java.
+
