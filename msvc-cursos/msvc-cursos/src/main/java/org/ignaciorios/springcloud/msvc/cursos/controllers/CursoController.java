@@ -1,7 +1,10 @@
 package org.ignaciorios.springcloud.msvc.cursos.controllers;
 
 
+import feign.FeignException;
+import feign.Response;
 import jakarta.validation.Valid;
+import org.ignaciorios.springcloud.msvc.cursos.models.Usuario;
 import org.ignaciorios.springcloud.msvc.cursos.models.entity.Curso;
 import org.ignaciorios.springcloud.msvc.cursos.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 public class CursoController {
@@ -28,7 +28,7 @@ public class CursoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> detalle(@PathVariable Long id) {
-        Optional<Curso> o = service.porId(id);
+        Optional<Curso> o = service.porIdConusu(id);
         if (o.isPresent()) {
             return ResponseEntity.ok(o.get());
         }
@@ -64,6 +64,73 @@ public class CursoController {
 
     // Otros métodos del controlador...
 
+@PutMapping("/asignar-usuario/{cursoId}")
+private ResponseEntity<?> asignarUsuario(@RequestBody Usuario usuario, @PathVariable Long cursoId){
+
+    Optional<Usuario> o ;
+            try{
+            o =    service.asignarUsuario(usuario, cursoId);
+            }catch(FeignException f){
+                return ResponseEntity.
+                        status(HttpStatus.NOT_FOUND).
+                        body(Collections.singletonMap("Mensaje","no existe usuario por " +
+                                "ID o error communication: " + f.getMessage()));
+            }
+      if(o.isPresent())
+      {
+          return ResponseEntity.status(HttpStatus.CREATED).body(o.get());
+
+      }
+      return ResponseEntity.notFound().build();
+
+}
+
+    @DeleteMapping("/eliminar-usuario/{cursoId}")
+    private ResponseEntity<?> eliminarUsuario(@RequestBody Usuario usuario, @PathVariable Long cursoId){
+
+        Optional<Usuario> o = null;
+        try{
+            o =    service.eliminarUsuario(usuario, cursoId);
+        }catch(FeignException f){
+            return ResponseEntity.
+                    status(HttpStatus.NOT_FOUND).
+                    body(Collections.singletonMap("Mensaje","no existe usuario por " +
+                            "ID o error communication: " + f.getMessage()));
+        }
+        if(o.isPresent())
+        {
+            return ResponseEntity.status(HttpStatus.OK).body(o.get());
+
+        }
+        return ResponseEntity.notFound().build();
+
+    }
+
+
+
+    @PostMapping("/crear-usuario/{cursoId}")
+    private ResponseEntity<?> crearUsuario(@RequestBody Usuario usuario, @PathVariable Long cursoId){
+
+        Optional<Usuario> o ;
+        try{
+            o =    service.crearUsuario(usuario, cursoId);
+        }catch(FeignException f){
+            return ResponseEntity.
+                    status(HttpStatus.NOT_FOUND).
+                    body(Collections.singletonMap("Mensaje","no se pudo crear usuario  " +
+                            " o error communication: " + f.getMessage()));
+        }
+        if(o.isPresent())
+        {
+            return ResponseEntity.status(HttpStatus.CREATED).body(o.get());
+
+        }
+        return ResponseEntity.notFound().build();
+
+    }
+
+
+
 
 
     private ResponseEntity<?> validarYProcesarResultados(BindingResult result) {
@@ -86,6 +153,7 @@ public class CursoController {
         return ResponseEntity.notFound().build();
 
 }
+
 
 
 

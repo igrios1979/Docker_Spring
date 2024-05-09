@@ -26,7 +26,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> detalle(@PathVariable(name = "id") Long id) {
+    public ResponseEntity<?> detalle(@PathVariable Long id) {
         Optional<Usuario> usuarioOptional = service.porId(id);
         if (usuarioOptional.isPresent()) {
             return ResponseEntity.ok(usuarioOptional.get());
@@ -106,7 +106,10 @@ public class UsuarioController {
 
     }
 
-
+@GetMapping("/usuarios-curso")
+public ResponseEntity<?> obtenerAlumnosPorCurso(@RequestParam  List<Long> ids){
+        return ResponseEntity.ok(service.listarProIds(ids));
+}
 
     private static ResponseEntity<Map<String, String>> validation(BindingResult result) {
         Map<String, String> errores = new HashMap<>();

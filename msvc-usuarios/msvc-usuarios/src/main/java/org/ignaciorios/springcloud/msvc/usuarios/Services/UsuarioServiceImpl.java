@@ -40,6 +40,11 @@ repository.deleteById(id);
     }
 
     @Override
+    public List<Usuario> listarProIds(Iterable<Long> ids) {
+        return (List<Usuario>) repository.findAllById(ids);
+    }
+
+    @Override
     public Optional<Usuario> porEmail(String email) {
         return repository.findByEmail(email);
     }
