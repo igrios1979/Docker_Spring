@@ -15,6 +15,6 @@ public interface UsuarioClientRest {
     public  Usuario crear(@RequestBody Usuario usuario);
 
 @GetMapping
-List<Usuario> obtenerAlumnosPorCurso(@RequestParam Iterable<Long> ids);
+List<Usuario> obtenerAlumnosPorCurso(@RequestParam("ids") List<Long> ids);
 
 }

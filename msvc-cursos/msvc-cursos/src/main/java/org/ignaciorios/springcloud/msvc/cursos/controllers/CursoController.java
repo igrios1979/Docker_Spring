@@ -2,7 +2,6 @@ package org.ignaciorios.springcloud.msvc.cursos.controllers;
 
 
 import feign.FeignException;
-import feign.Response;
 import jakarta.validation.Valid;
 import org.ignaciorios.springcloud.msvc.cursos.models.Usuario;
 import org.ignaciorios.springcloud.msvc.cursos.models.entity.Curso;
@@ -28,7 +27,7 @@ public class CursoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> detalle(@PathVariable Long id) {
-        Optional<Curso> o = service.porIdConusu(id);
+        Optional<Curso> o = service.porIdConcuss(id);
         if (o.isPresent()) {
             return ResponseEntity.ok(o.get());
         }
