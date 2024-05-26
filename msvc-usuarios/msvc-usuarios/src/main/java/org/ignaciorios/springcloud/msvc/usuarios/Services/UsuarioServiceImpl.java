@@ -40,6 +40,7 @@ repository.deleteById(id);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Usuario> listarProIds(Iterable<Long> ids) {
         return (List<Usuario>) repository.findAllById(ids);
     }
