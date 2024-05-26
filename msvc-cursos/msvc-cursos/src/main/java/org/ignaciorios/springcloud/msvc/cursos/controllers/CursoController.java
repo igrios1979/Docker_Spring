@@ -153,6 +153,13 @@ private ResponseEntity<?> asignarUsuario(@RequestBody Usuario usuario, @PathVari
 
 }
 
+@DeleteMapping("/eliminar-curso-usuario/{id}")
+public ResponseEntity<?> eliminarCursoUsuarioPorId(@PathVariable Long id){
+        service.eliminarCursoUsuarioPorId(id);
+        return ResponseEntity.noContent().build();
+
+}
+
 
 
 
