@@ -6,6 +6,7 @@
 		<groupId>org.ignaciorios.springcloud.msvc</groupId>
 		<artifactId>curso-kubernetes</artifactId>
 		<version>1.0.0</version>
+		<relativePath>../../pom.xml</relativePath>
 	</parent>
 	<groupId>org.ignaciorios.springcloud.msvc.cursos</groupId>
 	<artifactId>msvc-cursos</artifactId>
