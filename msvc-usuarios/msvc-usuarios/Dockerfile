@@ -16,7 +16,7 @@ COPY ./msvc-usuarios/msvc-usuarios/pom.xml .
 # Dar permisos de ejecución al Maven Wrapper si no están dados ya
 #RUN chmod +x ./mvnw
 
-# Ejecutar el comando Maven Wrapper para compilar el proyecto
+ #### Ejecutar el comando Maven Wrapper para compilar el proyecto
 RUN ./mvnw clean package -Dmaven.test.skip -Dmaven.main.skip -Dspring-boot.repackage.skip && rm -r ./target/
 
 COPY msvc-usuarios/msvc-usuarios/src ./src
